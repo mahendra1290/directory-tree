@@ -24,8 +24,8 @@ const App = () => {
 
   return (
     <div className='p-4 mx-auto'>
-      <div className='flex justify-between'>
-        <h1 className='text-3xl mb-4 text-blue-600'>Directory Tree</h1>
+      <div className='flex justify-between items-center mb-4'>
+        <h1 className='text-xl md:text-3xl text-blue-600'>Directory Tree</h1>
         <Checkbox label={'Show selected paths'} checked={showSelected} onChange={setShowSelected} />
       </div>
       <div className='flex-col flex md:flex-row gap-4'>
