@@ -35,13 +35,14 @@ const DirectoryTree = ({
         alt={directory.name}
         className='w-4 h-4'
       />
+      {directory.isDirectory && '/'}
       {directory.name}
     </span>
   );
 
   return (
     <div className='relative'>
-      <div className='absolute border bottom-3   top-6 left-1'></div>
+      <div className='absolute border bottom-3 top-6 left-1'></div>
       {!isRoot && <div className='absolute right-full top-3 w-9 border'></div>}
       <Checkbox
         label={label}

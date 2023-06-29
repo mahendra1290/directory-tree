@@ -24,10 +24,10 @@ const App = () => {
   return (
     <div className='p-4 mx-auto'>
       <div className='flex justify-between'>
-        <h1 className='text-2xl mb-4 text-blue-600'>Directory Tree</h1>
+        <h1 className='text-3xl mb-4 text-blue-600'>Directory Tree</h1>
         <Checkbox label={'Show selected paths'} checked={showSelected} onChange={setShowSelected} />
       </div>
-      <div className='border p-2 rounded-md text-lg text-gray-700'>
+      <div className='border border-teal-400 p-4 rounded-md text-lg text-gray-700 shadow-sm'>
         <DirectoryTree
           isRoot
           fileNode={state}
@@ -36,26 +36,26 @@ const App = () => {
         />
       </div>
       <button
-        className='disabled:bg-slate-300 disabled:text-black mx-auto block mt-2 px-4 py-2 rounded-md bg-blue-400 text-white'
+        className='disabled:bg-slate-300 hover:opacity-80 disabled:text-black mx-auto block mt-2 px-4 py-2 rounded-md bg-blue-400 text-white'
         onClick={handleSubmit}
       >
         Submit
       </button>
       {paths.length > 0 && (
-        <div className='max-w-lg '>
+        <div className='max-w-lg border p-4 rounded-md mt-2'>
           <p className='text-lg mb-2'>You have selected files:</p>
           {paths.map((path) => (
-            <p className='font-mono p-2 mb-2 bg-slate-100' key={path}>
+            <p className='font-mono p-2 mb-2 bg-blue-100 rounded-md' key={path}>
               {path}
             </p>
           ))}
         </div>
       )}
       {showSelected && (
-        <div>
+        <div className='max-w-lg border p-4 rounded-md mt-2'>
           <p className='text-lg mb-2'>Selected Files:</p>
           {generateSelectedPaths(state).map((path) => (
-            <p className='font-mono p-2 mb-2 bg-slate-100' key={path}>
+            <p className='font-mono p-2 mb-2 bg-blue-100 rounded-md' key={path}>
               {path}
             </p>
           ))}

@@ -31,9 +31,14 @@ const setSelection = (root: FileNode, isSelected: boolean) => {
  */
 const toggleSelection = (root: FileNode, searchNode: FileNode, isSelected: boolean): FileNode => {
   const copy = structuredClone(root);
+  let found = false;
   const dfsSearch = (node: FileNode) => {
+    if (found) {
+      return;
+    }
     if (node.id === searchNode.id) {
       setSelection(node, isSelected);
+      found = true;
     } else {
       node.children?.forEach(dfsSearch);
       if (node.isDirectory) {
