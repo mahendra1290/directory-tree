@@ -42,16 +42,40 @@ const DirectoryTree = ({ fileNode, isRoot, onSelect, onDeselect }: DirectoryTree
   const ref = useRef<HTMLDivElement>(null);
 
   const [bottom, setBottom] = useState(0);
+  const [bottom1, setBottom1] = useState(0);
 
   useEffect(() => {
     const lastChild = ref.current?.lastChild as HTMLDivElement | undefined;
+    const childReversed = [...(fileNode.children || [])].reverse();
+    let selectedIndex = childReversed.findIndex((child) => child.selected || child.indeteminate);
+
+    if (selectedIndex !== -1) {
+      let selectedChild = ref.current?.childNodes[childReversed.length - selectedIndex - 1] as
+        | HTMLDivElement
+        | undefined;
+      setBottom1((selectedChild?.offsetTop || 0) - 10);
+    } else {
+      setBottom1(0);
+    }
     setBottom((ref.current?.offsetHeight || 0) - (lastChild?.offsetTop || 0) + 14);
-  }, []);
+  }, [fileNode]);
 
   return (
     <div className='relative'>
-      <div style={{ bottom }} className='absolute border bottom-3 top-6 left-[0.3rem]'></div>
-      {!isRoot && <div className='absolute right-full top-3 w-[2.2rem] border'></div>}
+      <div style={{ bottom }} className={`absolute z-10 border bottom-3 top-6 left-[0.3rem]`}></div>
+      <div
+        style={{
+          height: bottom1,
+        }}
+        className={`absolute z-20 transition-all bg-blue-400 w-[2px] top-6 left-[0.3rem] `}
+      ></div>
+      {!isRoot && (
+        <div
+          className={`absolute transition-all z-0 right-full top-3 w-[2.2rem] border ${
+            fileNode.indeteminate ? 'border-green-400' : ''
+          } ${fileNode.selected ? 'border-blue-400' : ''}  `}
+        ></div>
+      )}
       <Checkbox
         label={label}
         checked={fileNode.selected}
