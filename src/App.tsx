@@ -22,6 +22,11 @@ const App = () => {
     setPaths(generateSelectedPaths(state));
   };
 
+  const handleReset = () => {
+    setState(data);
+    setPaths([]);
+  };
+
   return (
     <div className='p-4 mx-auto'>
       <div className='flex justify-between items-center mb-4'>
@@ -49,7 +54,7 @@ const App = () => {
         <button className='btn' onClick={handleSubmit}>
           Submit
         </button>
-        <button className='btn' onClick={() => setState(data)}>
+        <button className='btn' onClick={handleReset}>
           Reset
         </button>
       </div>
