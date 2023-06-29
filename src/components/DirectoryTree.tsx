@@ -50,8 +50,8 @@ const DirectoryTree = ({ fileNode, isRoot, onSelect, onDeselect }: DirectoryTree
 
   return (
     <div className='relative'>
-      <div style={{ bottom }} className='absolute border bottom-3 top-6 left-1'></div>
-      {!isRoot && <div className='absolute right-full top-3 w-9 border'></div>}
+      <div style={{ bottom }} className='absolute border bottom-3 top-6 left-[0.3rem]'></div>
+      {!isRoot && <div className='absolute right-full top-3 w-[2.2rem] border'></div>}
       <Checkbox
         label={label}
         checked={fileNode.selected}
