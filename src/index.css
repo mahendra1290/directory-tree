@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply disabled:bg-slate-300 hover:opacity-80 disabled:text-black block mt-2 px-4 py-2 rounded-md bg-blue-400 text-white
+  }
+}
